@@ -1,15 +1,14 @@
-<p>
-  <b>Commenter:</b>
-  <%= comment.commenter %>
-</p>
- 
-<p>
-  <b>Comment:</b>
-  <%= comment.body %>
-</p>
- 
-<p>
-  <%= link_to 'Destroy Comment', [comment.post, comment],
+<table class="table table-hover">
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td><%= comment.commenter %></td>
+    <td><%= comment.body %></td>
+    <td><%= link_to 'Destroy Comment', [comment.post, comment],
                :confirm => 'Are you sure?',
-               :method => :delete %>
-</p>
+               :method => :delete %></td>
+  </tr>
+</table>
