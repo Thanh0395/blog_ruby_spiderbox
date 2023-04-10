@@ -9,6 +9,10 @@
     <td><%= comment.body %></td>
     <td><%= link_to 'Destroy Comment', [comment.post, comment],
                :confirm => 'Are you sure?',
-               :method => :delete %></td>
+               :method => :delete %>
+    </td>
+    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?',
+                                     :method => :delete %></td>
+
   </tr>
 </table>
