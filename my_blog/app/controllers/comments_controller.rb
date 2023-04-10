@@ -6,6 +6,13 @@ class CommentsController < ApplicationController
     end
     
     def show
+        @post = Post.find(params[:post_id])
+        @comment = @post.comments.find(params[:id])
+        @comment.destroy
+        respond_to do |format|
+            format.html { redirect_to post_path(@post), notice: "Comment was successfully destroyed." }
+            format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
     end
 
      # PATCH/PUT /comments/1 or /comments/1.json
@@ -28,10 +35,11 @@ class CommentsController < ApplicationController
         # post_id = @comment.post.post_id
         @comment.destroy
         # redirect_to post_path(@post)
-        respond_to do |format|
-            format.html { redirect_to post_path(@post), notice: "Comment was successfully destroyed." }
-            format.json { head :no_content }
-        end
+        render :nothing => true, :status => 204
+        # respond_to do |format|
+        #     format.html { redirect_to post_path(@post), notice: "Comment was successfully destroyed." }
+        #     format.json { render json: @post.errors, status: :unprocessable_entity }
+        # end
     end
     
     private
